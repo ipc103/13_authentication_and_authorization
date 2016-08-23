@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index]
+  get 'cookies/example1'
+
+  get 'cookies/example2'
+
+  get 'cookies/example3'
+
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/sessions', to: 'sessions#create', as: 'sessions'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :users, only: [:index, :new, :create]
   resources :tweets, except: [:destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
